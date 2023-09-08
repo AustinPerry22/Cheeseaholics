@@ -10,6 +10,7 @@ export class PostController extends BaseController {
             .get('', this.getPosts)
             .use(Auth0Provider.getAuthorizedUserInfo)
             .post('', this.createPost)
+            .delete('/:postId', this.deletePost)
     }
 
     async createPost(request, response, next) {
@@ -33,7 +34,11 @@ export class PostController extends BaseController {
         }
     }
 
-    async deletePost(request) {
+    async deletePost(request, response, next) {
+        try {
 
+        } catch (error) {
+            next(error)
+        }
     }
 }
