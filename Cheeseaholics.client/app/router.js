@@ -2,6 +2,7 @@ import { AboutController } from "./controllers/AboutController.js";
 import { HomeController } from "./controllers/HomeController.js";
 import { ValuesController } from "./controllers/ValuesController.js";
 import { AboutView } from "./views/AboutView.js";
+import { PostController } from "./controllers/PostController.js";
 
 /**
  * Register your routes for the application here
@@ -10,7 +11,7 @@ import { AboutView } from "./views/AboutView.js";
 export const router = [
   {
     path: '',
-    controller: HomeController,
+    controller: [HomeController, PostController],
     view: /*html*/``
   },
   {

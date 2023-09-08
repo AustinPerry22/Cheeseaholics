@@ -4,19 +4,19 @@ export const PostVoteSchema = new Schema(
     {
         vote: { type: Boolean },
 
-        authorId: { type: Schema.Types.ObjectId, required: true, ref: '' },
-        parentId: { type: Schema.Types.ObjectId, required: true }
+        authorId: { type: Schema.Types.ObjectId, required: true, ref: 'Account' },
+        PostId: { type: Schema.Types.ObjectId, required: true, ref: 'Post' }
     }, { timestamps: true, toJSON: { virtuals: true } }
 )
 
-VoteSchema.virtual('profileId', {
+PostVoteSchema.virtual('profileId', {
     localField: 'authorId',
     ref: 'Account',
     foreignField: 'id',
     justOne: true
 })
 
-VoteSchema.virtual('virtualParentId', {
+PostVoteSchema.virtual('Id', {
     localField: 'parentId',
     ref: 'Post' || 'Comment',
     foreignField: 'id',

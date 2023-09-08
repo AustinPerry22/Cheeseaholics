@@ -1,6 +1,6 @@
 import { Schema } from 'mongoose'
 
-export const PVoteSchema = new Schema(
+export const VoteSchema = new Schema(
     {
         vote: { type: Boolean },
 

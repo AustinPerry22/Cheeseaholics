@@ -39,3 +39,11 @@
 .heading-text {
     font-family: 'DM Sans';
 }
+
+.card:hover {
+    scale: 1.01;
+}
+
+.vote-badge {
+    bottom: 0.5rem;
+}
