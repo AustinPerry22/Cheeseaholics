@@ -1,10 +1,10 @@
 import { Schema } from 'mongoose'
 
-export const PVoteSchema = new Schema(
+export const PostVoteSchema = new Schema(
     {
         vote: { type: Boolean },
 
-        authorId: { type: Schema.Types.ObjectId, required: true, ref: 'Account' },
+        authorId: { type: Schema.Types.ObjectId, required: true, ref: '' },
         parentId: { type: Schema.Types.ObjectId, required: true }
     }, { timestamps: true, toJSON: { virtuals: true } }
 )

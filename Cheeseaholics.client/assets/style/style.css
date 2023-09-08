@@ -31,3 +31,11 @@
 .account {
     font-family: 'DM Sans'
 }
+
+.main-row {
+    min-height: 80vh;
+}
+
+.heading-text {
+    font-family: 'DM Sans';
+}
