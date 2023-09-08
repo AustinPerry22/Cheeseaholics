@@ -4,6 +4,12 @@ import { Pop } from "../utils/Pop.js";
 import { api } from "./AxiosService.js";
 
 class PostService {
+    async createPost(formData) {
+        const res = await api.post('api/posts', formData)
+        AppState.posts.push(new Post(res.data))
+        AppState.emit('posts')
+
+    }
     async getPosts() {
         try {
             let res = await api.get('api/posts')

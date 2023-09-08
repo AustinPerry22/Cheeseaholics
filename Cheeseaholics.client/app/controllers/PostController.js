@@ -2,6 +2,7 @@ import { AppState } from "../AppState.js";
 import { postService } from "../services/PostService.js";
 import { Pop } from "../utils/Pop.js";
 import { setHTML } from "../utils/Writer.js";
+import { getFormData } from "../utils/FormHandler.js"
 
 
 function _drawPosts() {
@@ -24,6 +25,17 @@ export class PostController {
         } catch (error) {
             Pop.error(error)
             console.log(error);
+        }
+    }
+
+    async createPost() {
+        try {
+            window.event.preventDefault()
+            const form = window.event.target
+            const formData = getFormData(form)
+            await postService.createPost(formData)
+        } catch (error) {
+            Pop.error(error)
         }
     }
 
