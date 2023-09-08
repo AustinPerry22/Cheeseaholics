@@ -23,3 +23,10 @@ PostSchema.virtual('profileName', {
     foreignField: 'nickname',
     justOne: true
 })
+
+PostSchema.virtual('profilePicture', {
+    localField: 'authorPicture',
+    ref: 'Account',
+    foreignField: 'picture',
+    justOne: true
+})

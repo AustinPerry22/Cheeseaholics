@@ -19,6 +19,7 @@ export class PostController extends BaseController {
             let body = request.body
             body.authorId = request.userInfo.id
             body.authorName = request.userInfo.nickname
+            body.authorPicture = request.userInfo
             let newPost = await postService.createPost(body)
             response.send(newPost)
         } catch (error) {
