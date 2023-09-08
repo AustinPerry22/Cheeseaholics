@@ -36,7 +36,7 @@ export class PostController extends BaseController {
 
     async deletePost(request, response, next) {
         try {
-
+            let postId = request.params.postId
         } catch (error) {
             next(error)
         }
