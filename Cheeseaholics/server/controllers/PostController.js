@@ -5,7 +5,7 @@ import { Auth0Provider } from "@bcwdev/auth0provider";
 
 export class PostController extends BaseController {
     constructor() {
-        super('api/post')
+        super('api/posts')
         this.router
             .get('', this.getPosts)
             .use(Auth0Provider.getAuthorizedUserInfo)
@@ -15,8 +15,8 @@ export class PostController extends BaseController {
     async createPost(request, response, next) {
         try {
             let body = request.body
-            body.authorId = request.UserInfo._id
-            body.authorName = request.UserInfo.nickname
+            body.authorId = request.userInfo.id
+            body.authorName = request.userInfo.nickname
             let newPost = await postService.createPost(body)
             response.send(newPost)
         } catch (error) {

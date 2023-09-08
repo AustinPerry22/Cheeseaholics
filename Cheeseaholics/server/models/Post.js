@@ -4,15 +4,15 @@ export const PostSchema = new Schema({
     title: { type: String, required: true, maxlength: 120, minlength: 3 },
     description: { type: String, required: true, maxlength: 512, minlength: 4 },
     cheeseType: { type: String, enum: ['cheddar', 'mozzarella', 'american', 'parmesan', 'bleuCheese'] },
-    // votes: { type: Number, required: true, default: 0 },
-    authorId: { type: Schema.Types.ObjectId, required: true, ref: 'authorId' },
-    authorName: { type: Schema.Types.String, required: true, ref: 'authorName' }
+    votes: { type: Number, required: true, default: 0 },
+    authorId: { type: Schema.Types.ObjectId, required: true, ref: 'profileId' },
+    authorName: { type: Schema.Types.String, required: true, ref: 'profileName' }
 }, { timestamps: true, toJSON: { virtuals: true } })
 
 PostSchema.virtual('profileId', {
     localField: 'authorId',
     ref: 'Account',
-    foreignField: '_id',
+    foreignField: 'id',
     justOne: true
 })
 
