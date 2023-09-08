@@ -23,3 +23,11 @@
 .main-page {
     min-height: 90vh;
 }
+
+.nav-link {
+    font-family: 'DM Sans';
+}
+
+.account {
+    font-family: 'DM Sans'
+}
