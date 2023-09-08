@@ -7,8 +7,9 @@ export class PostController extends BaseController {
     constructor() {
         super('api/post')
         this.router
+            .get('', this.getPosts)
             .use(Auth0Provider.getAuthorizedUserInfo)
-            .post('',)
+            .post('', this.createPost)
     }
 
     async createPost(request, response, next) {
@@ -18,6 +19,15 @@ export class PostController extends BaseController {
             body.authorName = request.UserInfo.nickname
             let newPost = await postService.createPost(body)
             response.send(newPost)
+        } catch (error) {
+            next(error)
+        }
+    }
+
+    async getPosts(requests, response, next) {
+        try {
+            let posts = await postService.getPosts()
+            response.send(posts)
         } catch (error) {
             next(error)
         }

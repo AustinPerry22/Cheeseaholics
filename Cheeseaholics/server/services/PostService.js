@@ -7,6 +7,11 @@ class PostService {
         return newPost
     }
 
+    async getPosts() {
+        let posts = dbContext.Post.find()
+        return posts
+    }
+
 }
 
 export const postService = new PostService()
