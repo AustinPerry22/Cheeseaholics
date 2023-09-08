@@ -24,12 +24,16 @@ export class PostController extends BaseController {
         }
     }
 
-    async getPosts(requests, response, next) {
+    async getPosts(request, response, next) {
         try {
             let posts = await postService.getPosts()
             response.send(posts)
         } catch (error) {
             next(error)
         }
+    }
+
+    async deletePost(request) {
+
     }
 }
