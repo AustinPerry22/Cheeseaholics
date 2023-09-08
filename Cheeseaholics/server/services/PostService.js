@@ -8,6 +8,7 @@ class PostService {
             postToEdit.title = dataBody.title ? dataBody.title : postToEdit.title
             postToEdit.description = dataBody.description ? dataBody.description : postToEdit.description
             postToEdit.cheeseType = dataBody.cheeseType ? dataBody.cheeseType : postToEdit.cheeseType
+            await postToEdit.save()
             return postToEdit
         } else if (!postToEdit.authorId == currentUserId) {
             throw new BadRequest('Now allowed.')
