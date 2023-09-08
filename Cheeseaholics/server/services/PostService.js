@@ -2,11 +2,10 @@ import { dbContext } from "../db/DbContext.js";
 import { BadRequest } from "../utils/Errors.js";
 
 class PostService {
-    async deletePost(postId) {
+    async deletePost(postId, currentUserId) {
         let postToDelete = await dbContext.Post.findById(postId)
-        if (!postToDelete) throw new BadRequest('404 Invalid Request.')
-        postToDelete.remove()
-        return `POST => ${postToDelete.description} <= HAS BEEN REMOVED`
+        if (postToDelete.authorId == currentUserId)
+            return `POST => ${postToDelete.description} <= HAS BEEN REMOVED`
     }
     async createPost(body) {
         let newPost = await dbContext.Post.create(body)
