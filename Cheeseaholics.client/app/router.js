@@ -3,6 +3,7 @@ import { HomeController } from "./controllers/HomeController.js";
 import { ValuesController } from "./controllers/ValuesController.js";
 import { AboutView } from "./views/AboutView.js";
 import { PostController } from "./controllers/PostController.js";
+import { CommentController } from "./controllers/CommentController.js";
 
 /**
  * Register your routes for the application here
@@ -11,7 +12,7 @@ import { PostController } from "./controllers/PostController.js";
 export const router = [
   {
     path: '',
-    controller: [HomeController, PostController],
+    controller: [HomeController, PostController, CommentController],
     view: /*html*/``
   },
   {

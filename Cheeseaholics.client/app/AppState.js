@@ -16,6 +16,11 @@ class ObservableAppState extends EventEmitter {
   /** @type {import('./models/Post.js').Post[]} */
   posts = []
 
+  /** @type {import('./models/Comment.js').Comment[]} */
+  comments = []
+
+  activePost = null
+
   // Used to load initial data
   init() {
 

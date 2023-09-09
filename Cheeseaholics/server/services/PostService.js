@@ -28,9 +28,13 @@ class PostService {
         return newPost
     }
 
-    async getPosts() {
-        let posts = dbContext.Post.find()
+    async getPosts(query) {
+        let posts = await dbContext.Post.find(query)
         return posts
+    }
+
+    async getCommentsByPost(query) {
+
     }
 
 }

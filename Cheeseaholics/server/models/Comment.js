@@ -36,6 +36,6 @@ CommentSchema.virtual('profileId', {
 CommentSchema.virtual('thisPostId', {
     localField: 'postId',
     ref: 'Post',
-    foreignField: 'id',
+    foreignField: 'postId',
     justOne: true
 })

@@ -16,12 +16,15 @@ export class PostController {
     constructor() {
         console.log('Post Controller');
         this.getPosts()
+        AppState.on('account', this.getPosts)
         AppState.on('posts', _drawPosts)
+        // AppState.on('activePost', _drawActivePost)
     }
 
-    async getPosts() {
+    async getPosts(cheeseType) {
         try {
-            await postService.getPosts()
+            console.log(cheeseType)
+            await postService.getPosts(cheeseType)
         } catch (error) {
             Pop.error(error)
             console.log(error);
@@ -30,12 +33,34 @@ export class PostController {
 
     async createPost() {
         try {
+            console.log('creatingPost')
+            // @ts-ignore
             window.event.preventDefault()
+            // @ts-ignore
             const form = window.event.target
             const formData = getFormData(form)
             await postService.createPost(formData)
         } catch (error) {
             Pop.error(error)
+        }
+    }
+
+    async setActivePost(postId) {
+        await postService.setActivePost(postId)
+        let activePost = AppState.activePost
+        // @ts-ignore
+        setHTML('active-post-container', activePost.ActivePostTemplate)
+    }
+    async deletePost(postId) {
+
+        try {
+            const yes = await Pop.confirm("Remove this post?")
+            if (yes) {
+                postService.deletePost(postId)
+            }
+        } catch (error) {
+            Pop.error(error)
+            console.log(error)
         }
     }
 

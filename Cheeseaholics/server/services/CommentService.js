@@ -8,8 +8,8 @@ class CommentService {
         let newComment = await dbContext.Comment.create(dataBody)
         return newComment
     }
-    async getComments() {
-        let comments = await dbContext.Comment.find()
+    async getComments(postId) {
+        let comments = await dbContext.Comment.find({ postId }).populate()
         return comments
     }
 }

@@ -29,7 +29,8 @@ export class PostController extends BaseController {
 
     async getPosts(request, response, next) {
         try {
-            let posts = await postService.getPosts()
+            const query = request.query
+            let posts = await postService.getPosts(query)
             response.send(posts)
         } catch (error) {
             next(error)
