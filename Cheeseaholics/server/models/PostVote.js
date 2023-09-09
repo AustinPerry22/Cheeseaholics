@@ -2,23 +2,23 @@ import { Schema } from 'mongoose'
 
 export const PostVoteSchema = new Schema(
     {
-        vote: { type: Boolean },
+        vote: { type: Number, default: 0, required: true },
 
-        authorId: { type: Schema.Types.ObjectId, required: true, ref: 'Account' },
-        PostId: { type: Schema.Types.ObjectId, required: true, ref: 'Post' }
+        authorId: { type: Schema.Types.ObjectId, required: true, ref: 'profileId' },
+        voteId: { type: Schema.Types.ObjectId, required: true, ref: 'postVoteId' }
     }, { timestamps: true, toJSON: { virtuals: true } }
 )
 
 PostVoteSchema.virtual('profileId', {
     localField: 'authorId',
     ref: 'Account',
-    foreignField: 'id',
+    foreignField: '_id',
     justOne: true
 })
 
-PostVoteSchema.virtual('Id', {
-    localField: 'parentId',
-    ref: 'Post' || 'Comment',
-    foreignField: 'id',
+PostVoteSchema.virtual('postVoteId', {
+    localField: 'voteId',
+    ref: 'Post',
+    foreignField: '_id',
     justOne: true
 })

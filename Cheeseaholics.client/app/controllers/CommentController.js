@@ -3,18 +3,11 @@ import { commentService } from "../services/CommentService.js";
 import { Pop } from "../utils/Pop.js";
 import { setHTML } from "../utils/Writer.js";
 import { getFormData } from "../utils/FormHandler.js"
+import { postService } from "../services/PostService.js";
 
 export class CommentController {
     constructor() {
-        console.log('Comment Controller');
-        this.getComments()
-        AppState.on('activePost', this.getComments)
-        AppState.on('activePost', this.drawComments)
-    }
-
-    async getComments() {
-        await commentService.getComments()
-        this.drawComments()
+        AppState.on('activeComments', this.drawComment)
     }
 
     async createComment(postId) {
@@ -28,11 +21,13 @@ export class CommentController {
         // @ts-ignore
         // console.log(formData.postId)
         await commentService.createComment(formData)
+        postService.setActivePost(postId)
+        this.drawComment()
     }
 
-    async drawComments() {
+    drawComment() {
         let content = ''
-        // @ts-ignore
-        console.log(`${AppState.comments} COMMENTS`)
+        AppState.activeComments.forEach(comment => content += comment.CommentTemplate)
+        setHTML('active-post-comment-container', content)
     }
 }

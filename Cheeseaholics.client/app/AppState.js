@@ -21,6 +21,8 @@ class ObservableAppState extends EventEmitter {
 
   activePost = null
 
+  activeComments = []
+
   // Used to load initial data
   init() {
 

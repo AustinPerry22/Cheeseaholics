@@ -8,20 +8,19 @@ export class CommentController extends BaseController {
     constructor() {
         super('api/comments')
         this.router
-            .get('/:postId/comments', this.getComments)
+            // .get('', this.getComments)
             .use(Auth0Provider.getAuthorizedUserInfo)
             .post('', this.createComment)
     }
 
-    async getComments(request, response, next) {
-        try {
-            let postId = request.params.postId
-            let comments = await commentService.getComments(postId)
-            response.send(comments)
-        } catch (error) {
-            next(error)
-        }
-    }
+    // async getComments(request, response, next) {
+    //     try {
+    //         let comments = await commentService.getComments()
+    //         response.send(comments)
+    //     } catch (error) {
+    //         next(error)
+    //     }
+    // }
 
     async createComment(request, response, next) {
         try {

@@ -12,11 +12,18 @@ function _drawPosts() {
     setHTML('post-container', content)
 }
 
+function _drawCreatePost() {
+    let content = `<button class="btn btn-success w-75 rounded-5 fs-4 fw-bolder mt-5" data-bs-toggle="modal"
+    data-bs-target="#exampleModal" data-whatever="@mdo">CREATE POST</button>`
+    setHTML('createPost', content)
+}
+
 export class PostController {
     constructor() {
         console.log('Post Controller');
         this.getPosts()
-        AppState.on('account', this.getPosts)
+        AppState.on('account', _drawPosts)
+        AppState.on('account', _drawCreatePost)
         AppState.on('posts', _drawPosts)
         // AppState.on('activePost', _drawActivePost)
     }

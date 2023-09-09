@@ -33,10 +33,6 @@ class PostService {
         return posts
     }
 
-    async getCommentsByPost(query) {
-
-    }
-
 }
 
 export const postService = new PostService()

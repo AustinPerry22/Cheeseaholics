@@ -6,7 +6,9 @@ import { setHTML } from "../utils/Writer.js";
 
 class CommentService {
     async getComments() {
-        let res = await api.get('api/comments')
+        // @ts-ignore
+        let res = await api.get(`api/posts/64fb94c080237a1cece1e4cc/comments`)
+        console.log(AppState.activePost)
         console.log(res.data)
     }
     async createComment(formData) {

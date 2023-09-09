@@ -58,6 +58,9 @@
         <h3 class=" mt-3 animate__animated animate__fadeIn">CATEGORIES</h3>
         <section class="row justify-content-center">
           <div class="col-md-10 col-12 bg-light text-dark">
+            <button class="btn btn-primary w-75 rounded-5 fs-4 fw-bolder my-2"
+              onclick='app.PostController.getPosts()'>All
+              Cheese Types</button>
             <button class="btn btn-dark w-75 rounded-5 fs-4 fw-bolder my-2"
               onclick='app.PostController.getPosts("cheddar")'>CHEDDA</button>
             <button class="btn btn-dark w-75 rounded-5 fs-4 fw-bolder mb-2"
@@ -71,9 +74,10 @@
           </div>
         </section>
         <!-- open model button -->
-        <button class="btn btn-success w-75 rounded-5 fs-4 fw-bolder mt-5" data-bs-toggle="modal"
-          data-bs-target="#exampleModal" data-whatever="@mdo">CREATE POST</button>
-
+        <div id="createPost">
+          <!-- <button class="btn btn-success w-75 rounded-5 fs-4 fw-bolder mt-5" data-bs-toggle="modal"
+            data-bs-target="#exampleModal" data-whatever="@mdo">CREATE POST</button> -->
+        </div>
         <!-- MODAL -->
         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog">

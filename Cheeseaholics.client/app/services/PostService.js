@@ -3,13 +3,19 @@ import { Post } from "../models/Post.js";
 import { Pop } from "../utils/Pop.js";
 import { api } from "./AxiosService.js";
 import { setHTML } from "../utils/Writer.js";
+import { Comment } from "../models/Comment.js";
 
 class PostService {
-    setActivePost(postId) {
+    async setActivePost(postId) {
         let foundPost = AppState.posts.find(post => post.postId == postId)
         // @ts-ignore
         AppState.activePost = foundPost
-        console.log(AppState.activePost)
+        // @ts-ignore
+        console.log(AppState.activePost.postId)
+        // @ts-ignore
+        let res = await api.get(`api/posts/${AppState.activePost.postId}/comments`)
+        AppState.activeComments = res.data.map(commentPojo => new Comment(commentPojo))
+        console.log(AppState.activeComments)
     }
     async createPost(formData) {
         const res = await api.post('api/posts', formData)

@@ -9,7 +9,7 @@ class CommentService {
         return newComment
     }
     async getComments(postId) {
-        let comments = await dbContext.Comment.find({ postId }).populate()
+        let comments = await dbContext.Comment.find({ postId })
         return comments
     }
 }

@@ -2,12 +2,14 @@ import BaseController from "../utils/BaseController.js";
 import { logger } from "../utils/Logger.js";
 import { postService } from "../services/PostService.js";
 import { Auth0Provider } from "@bcwdev/auth0provider";
+import { commentService } from "../services/CommentService.js";
 
 export class PostController extends BaseController {
     constructor() {
         super('api/posts')
         this.router
             .get('', this.getPosts)
+            .get('/:postId/comments', this.getComments)
             .use(Auth0Provider.getAuthorizedUserInfo)
             .post('', this.createPost)
             .put('/:postId', this.editPost)
@@ -22,6 +24,16 @@ export class PostController extends BaseController {
             body.authorPicture = request.userInfo.picture
             let newPost = await postService.createPost(body)
             response.send(newPost)
+        } catch (error) {
+            next(error)
+        }
+    }
+
+    async getComments(request, response, next) {
+        try {
+            let postId = request.params.postId
+            let comments = await commentService.getComments(postId)
+            response.send(comments)
         } catch (error) {
             next(error)
         }

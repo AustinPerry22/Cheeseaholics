@@ -1,19 +1,19 @@
 import { AppState } from "../AppState.js"
 
 export class Post {
-    constructor(data) {
-        this.title = data.title
-        this.description = data.description
-        this.cheeseType = data.cheeseType
-        this.votes = data.votes
-        this.authorId = data.authorId
-        this.authorName = data.authorName
-        this.authorPicture = data.authorPicture
-        this.postId = data._id
-    }
+  constructor(data) {
+    this.title = data.title
+    this.description = data.description
+    this.cheeseType = data.cheeseType
+    this.votes = data.votes
+    this.authorId = data.authorId
+    this.authorName = data.authorName
+    this.authorPicture = data.authorPicture
+    this.postId = data._id
+  }
 
-    get PostTemplate() {
-        return /*html*/ `
+  get PostTemplate() {
+    return /*html*/ `
                  <div class="card p-2 mx-5 mt-3 shadow">
             <div class="row no-gutters">
               <div class="col-2">
@@ -38,10 +38,10 @@ export class Post {
               </div>
             </div>
           </div>`
-    }
+  }
 
-    get ActivePostTemplate() {
-        return `          <div class="card-body border border-2 border-dark rounded p-3 shadow">
+  get ActivePostTemplate() {
+    return `          <div class="card-body border border-2 border-dark rounded p-3 shadow">
             <h5 class="card-title  d-flex flex-row justify-content-start post-title m-0 p-0">${this.title}</h5>
             <span class="d-flex flex-row justify-content-start p-0 m-0"><i
                 class="mdi mdi-cheese p-0 m-0 text-warning me-2"></i>
@@ -60,18 +60,18 @@ export class Post {
           </div>
           <button type="submit" class="btn btn-grad text-white border border-1 border-dark shadow">Submit</button>
         </form>`
-    }
+  }
 
-    get ComputeDeleteButton() {
-        if (this.authorId == AppState.account?.id) {
-            return `
+  get ComputeDeleteButton() {
+    if (this.authorId == AppState.account?.id) {
+      return `
             <div class="d-flex justify-content-end">
                 <i onclick="app.PostController.deletePost('${this.postId}')" class="selectable fs-5 mdi mdi-delete"></i>
             </div>
             `
-        } else {
-            return ``
-        }
+    } else {
+      return ``
     }
+  }
 }
 
