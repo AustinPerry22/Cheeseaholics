@@ -17,10 +17,10 @@ export class Post {
                  <div class="card p-2 mx-5 mt-3 shadow">
             <div class="row no-gutters">
               <div class="col-2">
-                <img class="card-img position-relative"
+                <img class="card-img position-relative p-0 m-0 auth-pic"
                   src=${this.authorPicture}
                   alt="Profile Picture" height="150" style="background-size: cover; background-postion: center;">
-                  <span class="position-absolute badge grad-1 fs-5 d-flex flex-row justify-content-center vote-badge">Votes</span>
+                  <span class="position-absolute badge grad-1 fs-5  d-flex flex-row justify-content-center vote-badge">Votes</span>
                   <span class="m-0 p-0 mt-2 position-absolute author-title rounded px-2 shadow">${this.authorName}</span>
               </div>
               <div class="col-10">
@@ -66,7 +66,7 @@ export class Post {
     if (this.authorId == AppState.account?.id) {
       return `
             <div class="d-flex justify-content-end">
-                <i onclick="app.PostController.deletePost('${this.postId}')" class="selectable fs-5 mdi mdi-delete"></i>
+                <i onclick="app.PostController.deletePost('${this.postId}')" class="selectable fs-5 m-0 p-2 mdi mdi-delete"></i>
             </div>
             `
     } else {

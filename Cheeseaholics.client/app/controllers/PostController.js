@@ -8,7 +8,9 @@ import { getFormData } from "../utils/FormHandler.js"
 function _drawPosts() {
     let content = ''
     let posts = AppState.posts
+    AppState.posts.reverse()
     posts.forEach(post => content += post.PostTemplate)
+    AppState.posts.reverse()
     setHTML('post-container', content)
 }
 

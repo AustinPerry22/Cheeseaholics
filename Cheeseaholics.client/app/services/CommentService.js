@@ -5,10 +5,14 @@ import { api } from "./AxiosService.js";
 import { setHTML } from "../utils/Writer.js";
 
 class CommentService {
+    async deleteComment(cId) {
+        const response = await api.delete(`api/comments/${cId}`)
+        const filteredArray = AppState.comments.filter(comment => comment.id != cId)
+        AppState.comments = filteredArray
+    }
     async getComments() {
         // @ts-ignore
-        let res = await api.get(`api/posts/64fb94c080237a1cece1e4cc/comments`)
-        console.log(AppState.activePost)
+        let res = await api.get(`api/comments`)
         console.log(res.data)
     }
     async createComment(formData) {

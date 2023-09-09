@@ -1,23 +1,21 @@
 import { Schema } from 'mongoose'
 
-export const PostVoteSchema = new Schema(
+export const UpVoteSchema = new Schema(
     {
-        vote: { type: Number, default: 0, required: true },
-
         authorId: { type: Schema.Types.ObjectId, required: true, ref: 'profileId' },
-        voteId: { type: Schema.Types.ObjectId, required: true, ref: 'postVoteId' }
+        upVoteId: { type: Schema.Types.ObjectId, required: true, ref: 'VoteId' }
     }, { timestamps: true, toJSON: { virtuals: true } }
 )
 
-PostVoteSchema.virtual('profileId', {
+UpVoteSchema.virtual('profileId', {
     localField: 'authorId',
     ref: 'Account',
     foreignField: '_id',
     justOne: true
 })
 
-PostVoteSchema.virtual('postVoteId', {
-    localField: 'voteId',
+UpVoteSchema.virtual('VoteId', {
+    localField: 'upVoteId',
     ref: 'Post',
     foreignField: '_id',
     justOne: true

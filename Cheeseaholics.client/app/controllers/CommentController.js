@@ -8,6 +8,11 @@ import { postService } from "../services/PostService.js";
 export class CommentController {
     constructor() {
         AppState.on('activeComments', this.drawComment)
+        AppState.on('activeComments', this.getComments)
+    }
+
+    async getComments() {
+        await commentService.getComments()
     }
 
     async createComment(postId) {
@@ -27,7 +32,22 @@ export class CommentController {
 
     drawComment() {
         let content = ''
+        AppState.activeComments.reverse()
         AppState.activeComments.forEach(comment => content += comment.CommentTemplate)
         setHTML('active-post-comment-container', content)
     }
+
+    async deleteComment(cId) {
+
+        try {
+            const yes = await Pop.confirm("Remove this comment?")
+            if (yes) {
+                commentService.deleteComment(cId)
+            }
+        } catch (error) {
+            Pop.error(error)
+            console.log(error)
+        }
+    }
+
 }
