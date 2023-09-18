@@ -83,12 +83,12 @@
     text-decoration: none;
 }
 
-.auth-pic {
+.auth-pics {
     transform: rotateX(0deg);
     background-size: cover;
     transition: transform ease-in-out 1.5s;
 }
 
-.auth-pic:hover {
+.auth-pics:hover {
     transform: rotateY(360deg);
 }

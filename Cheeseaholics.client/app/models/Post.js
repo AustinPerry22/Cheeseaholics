@@ -17,7 +17,7 @@ export class Post {
                  <div class="card p-2 mx-5 mt-3 shadow">
             <div class="row no-gutters">
               <div class="col-2">
-                <img class="card-img position-relative p-0 m-0 auth-pic"
+                <img class="card-img position-relative p-0 m-0 auth-pics"
                   src=${this.authorPicture}
                   alt="Profile Picture" height="150" style="background-size: cover; background-postion: center;">
                   <span class="position-absolute badge grad-1 fs-5  d-flex flex-row justify-content-center vote-badge">Votes</span>
